@@ -14,7 +14,7 @@ const _status = {
 const Button = ({children, status, onPress, textStatus, icon, style, disabled})=>{
     return (
         <TouchableOpacity disabled={disabled} onPress={disabled ? null : onPress ? onPress : null}>
-            <View style={StyleSheet.flatten([styles.default, style, status ? _status[status] : disabled ? _status['disable'] : _status['primary']])}>
+            <View style={StyleSheet.flatten([styles.default, style, disabled ? _status['disable'] : status ? _status[status] : _status['primary']])}>
                 <Text style={styles.textStyle} status={textStatus ? textStatus : 'white'} weight="medium" category="p">{children}</Text>
                 {icon ? icon() : null}
             </View>
