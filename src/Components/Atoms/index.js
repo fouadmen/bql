@@ -8,4 +8,5 @@ import FAB from './FAB';
 import Touchable from './Touchable';
 import Checkbox from './Checkbox';
 import Header from "./Header";
-export {Input, Divider, Icon, Layout, Text, Button, FAB, Touchable, Checkbox, Header};
+import Picker from "./Picker";
+export {Input, Divider, Icon, Layout, Text, Button, FAB, Touchable, Checkbox, Header, Picker};
