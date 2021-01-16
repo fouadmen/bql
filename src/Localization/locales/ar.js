@@ -38,7 +38,9 @@ export default {
             validate:"تاكيد",
             cancel : "إلغاء",
             save:"حفظ",
-            continue:"التالي"
+            continue:"التالي",
+            saveAndNew:"حفظ و جديد",
+            saveAndClose:"حفظ و إغلاق"
         },
         kg:"كلغ",
         litre:"لتر",
