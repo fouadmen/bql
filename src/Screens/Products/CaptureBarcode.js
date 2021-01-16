@@ -4,7 +4,6 @@ import { Camera } from "_organisms";
 import { Button } from "_atoms";
 import { Colors } from '_styles';
 import { useTranslation } from 'react-i18next';
-import { useIsFocused } from '@react-navigation/native';
 
 
 const styles = {
@@ -25,8 +24,15 @@ const styles = {
 };
 
 const CaptureBarcode = ({navigation}) => {
-    const [barcode, setBarcode] = React.useState("")
+    const [barcode, setBarcode] = React.useState("");
+    const [displayCamera, setDisplayCamera] = React.useState(false);
     const {t, i18n} = useTranslation();
+
+    React.useEffect(() => {
+        setTimeout(() => {
+         setDisplayCamera(true);
+        }, 500); 
+     },[]);
     
     const onItemScan = (rawData) => {
         setBarcode(rawData.data);
@@ -34,7 +40,8 @@ const CaptureBarcode = ({navigation}) => {
 
     const saveBarcode = () => {
         //save barcode
-        navigation.navigate("NewProductForm")
+        navigation.navigate("NewProductForm");
+        setDisplayCamera(false);
     }
 
     const onChangeText = (val) => {
@@ -45,8 +52,7 @@ const CaptureBarcode = ({navigation}) => {
         
             <View style={styles.root}>
                 <View style={styles.upperSection}>
-                    {/* { useIsFocused ? <Camera displayMask={true} onBarCodeRead={onItemScan}/> :  <View style={{flex:1}}/>} */}
-                    <View style={{flex:1}}/>
+                    { displayCamera ? <Camera displayMask={true} onBarCodeRead={onItemScan}/> :  <View style={{flex:1}}/>}
                 </View>
                 <View style={styles.lowerSection}>
                     <TextInput 
@@ -56,7 +62,7 @@ const CaptureBarcode = ({navigation}) => {
                         keyboardType="numeric"
                         style={{width:'100%', borderBottomWidth:1, borderBottomColor:Colors.GRAY_DARK, fontSize:20}} 
                     />
-                    <Button disabled={barcode!==""} style={{marginTop:16}} onPress={saveBarcode}>{t("common:actions:continue")}</Button>
+                    <Button disabled={barcode==""} style={{marginTop:16}} onPress={saveBarcode}>{t("common:actions:continue")}</Button>
                 </View>
             </View>
 

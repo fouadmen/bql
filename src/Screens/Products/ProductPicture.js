@@ -4,8 +4,6 @@ import { Text } from "_atoms";
 import { RNCamera } from 'react-native-camera';
 import { Colors } from '_styles';
 
-import { useIsFocused } from '@react-navigation/native';
-
 const Camera =(props) => {
     const cameraRef = React.createRef();
 
@@ -34,9 +32,9 @@ const Camera =(props) => {
             
             >
                 <View style={{height:56, backgroundColor:"#000", flexDirection:'row', justifyContent:'space-between', paddingHorizontal:24, opacity:0.4}}>
-                    <Text weight="medium" category="h4" status="white">Cancel</Text>
+                    <Text onPress={()=>{props.navigation.goBack()}} weight="medium" category="h4" status="white">Cancel</Text>
                     <Text weight="bold" category="h3" status="white">Snap Photo</Text>
-                    <Text weight="medium" category="h4" status="white">Skip</Text>
+                    <Text onPress={()=>props.navigation.navigate("CaptureBarcode")} weight="medium" category="h4" status="white">Skip</Text>
                 </View>
 
                 <TouchableOpacity onPress={takePicture} style={{height:64, aspectRatio:1, backgroundColor:Colors.WHITE, borderRadius:32, flexDirection:'row', justifyContent:'center', bottom:24, alignSelf:'center'}}>
@@ -48,15 +46,20 @@ const Camera =(props) => {
 
 const ProductPicture = ({navigation}) => {
     const [displayCamera, setDisplayCamera] = React.useState(false);
-    const isFocused = useIsFocused
-    
+
     const onPictureTaken = (uri) => {
         navigation.navigate("ImagePreview", {uri})
     }
 
+    React.useEffect(() => {
+       setTimeout(() => {
+        setDisplayCamera(true);
+       }, 500); 
+    },[])
+
     return (
        <>
-           { isFocused ? <Camera onPictureTaken={onPictureTaken}/> :  <View/>}
+           { displayCamera ?  <Camera navigation={navigation} onPictureTaken={onPictureTaken}/> :  <View/>}
        </>
     )
 }
