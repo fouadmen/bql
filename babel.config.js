@@ -28,7 +28,7 @@ module.exports = {
           "_styles": "./src/Styles",
           "_utils": "./src/Utils",
           "_localization":"./src/Localization",
-          // "_reducers" : './src/redux_/reducers',
+          "_reducers" : './src/Store/reducers',
           // "_actions" : './src/redux_/actions',
           "_store" : "./src/Store",
           // "_modals": "./src/modals"

@@ -4,7 +4,8 @@ import { Camera } from "_organisms";
 import { Button } from "_atoms";
 import { Colors } from '_styles';
 import { useTranslation } from 'react-i18next';
-
+import { setProductInfo } from "_reducers";
+import {useDispatch} from 'react-redux';
 
 const styles = {
     root: {
@@ -27,6 +28,7 @@ const CaptureBarcode = ({navigation}) => {
     const [barcode, setBarcode] = React.useState("");
     const [displayCamera, setDisplayCamera] = React.useState(false);
     const {t, i18n} = useTranslation();
+    const dispatch = useDispatch();
 
     React.useEffect(() => {
         setTimeout(() => {
@@ -39,7 +41,7 @@ const CaptureBarcode = ({navigation}) => {
     }
 
     const saveBarcode = () => {
-        //save barcode
+        dispatch(setProductInfo({target:"barcode", data:barcode}));
         navigation.navigate("NewProductForm");
         setDisplayCamera(false);
     }

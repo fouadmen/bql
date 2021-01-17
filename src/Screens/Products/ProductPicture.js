@@ -4,12 +4,15 @@ import { Text } from "_atoms";
 import { RNCamera } from 'react-native-camera';
 import { Colors } from '_styles';
 
+import {useDispatch} from 'react-redux';
+
 const Camera =(props) => {
     const cameraRef = React.createRef();
+    const dispatch = useDispatch();
 
     const takePicture = async ()=>{
         if (cameraRef) {
-            const data = await cameraRef.current.takePictureAsync({base64: true });
+            const data = await cameraRef.current.takePictureAsync({base64: true});
             props.onPictureTaken('data:image/jpeg;base64,'+data.base64);
         }
     };    

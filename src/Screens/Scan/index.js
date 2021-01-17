@@ -5,6 +5,9 @@ import { Layout, Text, Icon, Divider, Button, Input, Header } from "_atoms";
 import { Camera } from "_organisms";
 import { Colors } from "_styles";
 
+import {useDispatch} from 'react-redux';
+import {setcartItems} from "_reducers";
+
 const ListItem = ({item, onPress})=>{
     return (
         <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', marginVertical:8}}>
@@ -47,6 +50,7 @@ const Scan = ({navigation}) => {
     const [scanning, setScanning] = React.useState(false);
     const [showModal, setShowModal] = React.useState(false);
     const [barcode, setBarCode] = React.useState(null);
+    const dispatch = useDispatch();
 
     const {t, i18n} = useTranslation();
     
@@ -61,6 +65,7 @@ const Scan = ({navigation}) => {
     }
 
     const finishScanning = () => {
+        dispatch(setcartItems({data}))
         navigation.navigate("breakdown");
         setScanning(false);    
     }

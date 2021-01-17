@@ -3,7 +3,7 @@ import { FlatList, View } from 'react-native'
 import { Header, Layout , Text, Button, Icon, Input } from "_atoms";
 import { useTranslation } from 'react-i18next';
 import { Colors } from '_styles';
-
+import {useDispatch, useSelector} from 'react-redux';
 
 const ListHeader = () => {
     const {t, i18n} = useTranslation();
@@ -27,7 +27,7 @@ const ListFooter = (props) => {
             </View>
             <View style={{marginVertical:8}}>
                 <Text style={{flex:3, textAlign:'right'}} category="h3" weight="bold">{t("common:paid")}</Text>
-                <Input placeholder='0' _onChangeText={(p)=>setPaid(p)} keyboardType="numeric"/>
+                <Input mode placeholder={t("common:paid")} _onChangeText={(p)=>setPaid(p)} keyboardType="numeric"/>
             </View>
             <View style={{marginVertical:8, flexDirection:'row-reverse', justifyContent:'space-between'}}>
                 <Text style={{flex:3, textAlign:'right'}} category="h3" weight="bold">{t("common:rest")}</Text>
@@ -35,6 +35,10 @@ const ListFooter = (props) => {
             </View>
         </View>
     );
+}
+
+const finish = (props) => {
+    //add to history
 }
 
 const ListItem = ({item})=>{
@@ -49,11 +53,11 @@ const ListItem = ({item})=>{
 
 const PriceBreakdown = ({navigation}) => {
     const {t, i18n} = useTranslation();
-    const data = [{name:"item 1", price:10, quantity:3},{name:"item name", price:10, quantity:3}]
+    const data = useSelector(state=>state.cart.cartItems);
     const total = data.reduce((a, b)=>a+b.price*b.quantity,0);
     return (
         <Layout>
-            <Header first canGoBack navigation={navigation}/>
+            <Header hideDrawer first canGoBack navigation={navigation}/>
             <Text category="h2" weight="bold">{t("scan:priceBreakdown")}</Text>
             <FlatList
                 data={data}
