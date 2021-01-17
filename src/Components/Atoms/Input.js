@@ -68,16 +68,19 @@ const Input = ({placeholder, style, containerStyle, backHandler, _onChangeText, 
     :
       <View style={[containerStyle, {marginVertical:4}]}>
           <Text weight="bold" category="s1" status="hint">{label}</Text>
-          <TextInput
-              onChangeText={onChangeText}
-              value={value}
-              placeholder={placeholder}
-              style={{borderBottomWidth:1, borderBottomColor:borderColor, padding:2, fontSize:16, fontWeight:'bold', marginBottom:4}}
-              numberOfLines={1}
-              keyboardType={keyboardType}
-              editable={editable}
-              textAlign={i18n.language === "ar" ? "right" : "left"}
-          />
+          <View style={{position:'relative'}}>
+            { leftComponent ? leftComponent : null}
+            <TextInput
+                onChangeText={onChangeText}
+                value={value}
+                placeholder={placeholder}
+                style={{borderBottomWidth:1, borderBottomColor:borderColor, padding:2, fontSize:16, fontWeight:'bold', marginBottom:4}}
+                numberOfLines={1}
+                keyboardType={keyboardType}
+                editable={editable}
+                textAlign={i18n.language === "ar" ? "right" : "left"}
+            />
+          </View>
           <Text category="s2" status={raiseErr ? "alert" : "white"}>{errorMsg}</Text>
       </View>
     
