@@ -59,7 +59,7 @@ const Products = ({navigation}) => {
                 ItemSeparatorComponent={()=><Divider style={{marginVertical:8, marginLeft:56}}/>}
                 showsVerticalScrollIndicator={false}
             />
-            <FAB onPress={()=>navigation.navigate("ProductPicture")}/>
+            <FAB onPress={()=>navigation.navigate("NewProductForm")}/>
         </Layout>
     )
 }

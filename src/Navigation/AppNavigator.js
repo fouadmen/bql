@@ -53,7 +53,7 @@ const Products_ = () => {
 const AppNavigator = ()=>{
     const {t, i18n} = useTranslation();
     return (
-        <AppStackNavigator.Navigator drawerPosition="right" initialRouteName="Products_" headerMode="none">
+        <AppStackNavigator.Navigator drawerPosition="right"  headerMode="none">
           <AppStackNavigator.Screen options={{drawerLabel: t("screens:scan"), drawerIcon:()=><Icon name="barcode"/>}} name="Scanning" component={Scanning}/> 
           <AppStackNavigator.Screen options={{drawerLabel: t("screens:dashboard"), drawerIcon:()=><Icon name="shop" type="Entypo"/>}} name="Dashboard" component={Dashboard} /> 
           <AppStackNavigator.Screen options={{drawerLabel: t("screens:products"), drawerIcon:()=><Icon name="handbag" type="SimpleLineIcons"/>}} name="Products_" component={Products_} /> 
