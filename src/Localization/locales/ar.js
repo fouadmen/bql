@@ -23,6 +23,22 @@ export default {
         minQuantity:"المستوى الأدنى",
         totalValue:"القيمة الإجمالية",
     },
+    settings:{
+        name : "الاسم",
+        email : "البريد الإلكتروني",
+        phoneNumber: "رقم الهاتف",
+        companyName: "المتجر",
+        openingHours: "أوقات العمل",
+        address:"العنوان",
+        userProfile:"ملف تعريف المستخدم",
+        shopDetails:"تفاصيل المتجر",
+        enterName:"أدخل الاسم",
+        enterEmail:"أدخل البريد الإلكتروني",
+        enterPhoneNumber:"أدخل رقم الهاتف",
+        enterCompanyName:"أدخل اسم المتجر",
+        enterOpeningHours:"أدخل أوقات العمل",
+        enterAddress:"أدخل العنوان"
+    },
     common: {
         hello: 'jeu',
         items:"قائمة المنتجات",

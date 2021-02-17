@@ -10,6 +10,7 @@ import ProductPicture from "_screens/Products/ProductPicture";
 import ImagePreview from "_screens/Products/ImagePreview";
 import CaptureBarcode from "_screens/Products/CaptureBarcode";
 import NewProductForm from "_screens/Products/NewProductForm";
+import Settings from "_screens/Settings";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useTranslation } from 'react-i18next';
 import { Icon } from "_atoms";
@@ -57,9 +58,9 @@ const AppNavigator = ()=>{
           <AppStackNavigator.Screen options={{drawerLabel: t("screens:scan"), drawerIcon:()=><Icon name="barcode"/>}} name="Scanning" component={Scanning}/> 
           <AppStackNavigator.Screen options={{drawerLabel: t("screens:dashboard"), drawerIcon:()=><Icon name="shop" type="Entypo"/>}} name="Dashboard" component={Dashboard} /> 
           <AppStackNavigator.Screen options={{drawerLabel: t("screens:products"), drawerIcon:()=><Icon name="handbag" type="SimpleLineIcons"/>}} name="Products_" component={Products_} /> 
-          <AppStackNavigator.Screen options={{drawerLabel: t("screens:reports"), drawerIcon:()=><Icon name="file-chart-outline" type="MaterialCommunityIcons"/>}} name="Reports" component={Dashboard} /> 
-          <AppStackNavigator.Screen options={{drawerLabel: t("screens:settings"), drawerIcon:()=><Icon name="settings-sharp"/>}} name="Settings" component={Dashboard} /> 
-          <AppStackNavigator.Screen options={{drawerLabel: t("screens:info"), drawerIcon:()=><Icon name="information-circle-outline"/>}} name="Info" component={Dashboard} /> 
+          {/* <AppStackNavigator.Screen options={{drawerLabel: t("screens:reports"), drawerIcon:()=><Icon name="file-chart-outline" type="MaterialCommunityIcons"/>}} name="Reports" component={Dashboard} />  */}
+          <AppStackNavigator.Screen options={{drawerLabel: t("screens:settings"), drawerIcon:()=><Icon name="settings-sharp"/>}} name="Settings" component={Settings} /> 
+          {/* <AppStackNavigator.Screen options={{drawerLabel: t("screens:info"), drawerIcon:()=><Icon name="information-circle-outline"/>}} name="Info" component={Dashboard} />  */}
         </AppStackNavigator.Navigator>
     )
 }
