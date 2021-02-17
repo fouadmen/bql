@@ -7,11 +7,13 @@ const Picker = (props) => {
         setSelectedItem(val)
         props.onSelect(val)
     }
+    if (props.forwardRef) {
+        props.forwardRef(val => setSelectedItem(val))
+    }
 
     React.useEffect(()=>{
         setSelectedItem(props.data[0])
     },[])
-    
     return (
         <Component
             selectedValue={selectedItem}

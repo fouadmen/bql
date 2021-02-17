@@ -18,7 +18,8 @@ const _status = {
     "success": {color: Colors.SUCCESS},
     "warning": {color: Colors.WARNING},
     "alert": {color: Colors.ALERT},
-    "white":{color: Colors.WHITE}
+    "white":{color: Colors.WHITE},
+    "black":{color:Colors.BLACK}
 }
 const Icon = (props)=>{
     const {style, status, name, size, type, onPress, containerStyle, disabled} = props;

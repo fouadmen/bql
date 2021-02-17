@@ -24,7 +24,16 @@ const productReducers = {
         state.productImage.uri = action.payload.data;
     },
     resetProductState(state, action){
-        state = initialState;
+        state.productImage.uri = "";
+        state.productInfo =  {
+            name:"", 
+            quantity:"", 
+            minQuantity:"", 
+            unit:"", 
+            purchasePrice:"", 
+            sellingPrice:"",
+            barcode:""
+        }
     }
 } 
 
