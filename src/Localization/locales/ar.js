@@ -9,6 +9,35 @@ export default {
         recentItems:"العناصر الحديثة",
         stockLevels:"مستويات المخزون"
     },
+    auth:{
+        signup : "تسجيل",
+        login:"تسجيل الدخول",
+        createNewAccount:"انشاء حساب جديد",
+        createAccount:"إنشاء حساب",
+        alreadyHaveAccount:"لديك حساب ؟",
+        loginNow:"أدخل الأن",
+        fullname:"الاسم الكامل",
+        email : "البريد الإلكتروني",
+        phone: "رقم الهاتف",
+        password:"كلمة المرور",
+        welcomeBack : "مرحبا بعودتك!",
+        loginToAccount:"تسجيل الدخول للحساب",
+        forgotPassword:"هل نسيت كلمة السر ؟",
+        continue:"سجل الدخول",
+        newHere : "جديد هنا ؟",
+        createAnAccount : "انشئ حساب",
+        alreadyRegisted:"المستخدم مسجل سابقا.",
+        gotIt:"مفهوم",
+        nameIsRequired:"الاسم مطلوب",
+        emailIsRequired:"البريد الإلكتروني مطلوب",
+        phoneIsRequired:"رقم الهاتف مطلوب",
+        passwordIsRequired:"كلمة المرور مطلوبة",
+        userNotRegistred:"المستخدم غير مسجل",
+        unknownError:"خطأ غير معروف",
+        invalidEmail:"البريد الإلكتروني غير صالح",
+        invalidePassword:"كلمة المرور يجب أن تحتوي على أكثر من 6 أحرف",
+        invalidePhone:"رقم الهاتف غير صالح"
+    },
     scan:{
         scannerLabel: "انقر فوق الزر 'ابدأ' لبدء فحص المنتجات",
         priceBreakdown: "تفاصيل السعر"
@@ -26,7 +55,7 @@ export default {
     settings:{
         name : "الاسم",
         email : "البريد الإلكتروني",
-        phoneNumber: "رقم الهاتف",
+        phone: "رقم الهاتف",
         companyName: "المتجر",
         openingHours: "أوقات العمل",
         address:"العنوان",
@@ -34,7 +63,7 @@ export default {
         shopDetails:"تفاصيل المتجر",
         enterName:"أدخل الاسم",
         enterEmail:"أدخل البريد الإلكتروني",
-        enterPhoneNumber:"أدخل رقم الهاتف",
+        enterphone:"أدخل رقم الهاتف",
         enterCompanyName:"أدخل اسم المتجر",
         enterOpeningHours:"أدخل أوقات العمل",
         enterAddress:"أدخل العنوان"
@@ -56,7 +85,8 @@ export default {
             save:"حفظ",
             continue:"التالي",
             saveAndNew:"حفظ و جديد",
-            saveAndClose:"حفظ و إغلاق"
+            saveAndClose:"حفظ و إغلاق",
+            signOut:"تسجيل الخروج",
         },
         kg:"كلغ",
         litre:"لتر",
