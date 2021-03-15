@@ -1,6 +1,9 @@
 {
     "compilerOptions": {
       "baseUrl": ".",
+      "target": "es6",
+      "module": "commonjs",
+      "allowSyntheticDefaultImports": true,
       "paths": {
         "_assets": ["src/assets/*"],
         "_components": ["src/components/*"],

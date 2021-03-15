@@ -6,7 +6,7 @@ import {Colors, Typography} from '_styles';
 import { useTranslation } from 'react-i18next';
 
 
-const Input = ({placeholder, style, containerStyle, backHandler, _onChangeText, leftComponent, rightComponent, multiline, forwardRef, keyboardType, focusable, label, mode, limit, errorMsg, editable, textAlign, val}) => {
+const Input = ({placeholder, style, containerStyle, backHandler, _onChangeText, leftComponent, rightComponent, multiline, forwardRef, keyboardType, focusable, label, mode, limit, errorMsg, editable, textAlign, val, secureTextEntry}) => {
   const [value, setValue] = React.useState(val ? val : '');
   const [borderColor, setBorderColor] = React.useState(Colors.GRAY_MEDIUM);
   const [raiseErr, setRaiseErr] = React.useState(false);
@@ -59,6 +59,7 @@ const Input = ({placeholder, style, containerStyle, backHandler, _onChangeText, 
             textAlignVertical="top"
             textAlign={ textAlign ? textAlign : i18n.language === "ar" ? "right" : "left"}
             keyboardType={keyboardType}
+            secureTextEntry={secureTextEntry}
           /> 
           
         
@@ -79,6 +80,7 @@ const Input = ({placeholder, style, containerStyle, backHandler, _onChangeText, 
                 keyboardType={keyboardType}
                 editable={editable}
                 textAlign={i18n.language === "ar" ? "right" : "left"}
+                secureTextEntry={secureTextEntry}
             />
           </View>
           <Text category="s2" status={raiseErr ? "alert" : "white"}>{errorMsg}</Text>

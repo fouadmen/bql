@@ -6,12 +6,14 @@ import { Colors } from '_styles';
 import { setProfileInfo } from "_reducers";
 import {useDispatch, useSelector} from 'react-redux';
 import {launchImageLibrary} from 'react-native-image-picker';
-
+import {AuthContext} from '../../Controllers/Context'
 
 const HEADER_HEIGHT = 192;
 const Settings = ({navigation}) => {
-    const { image, name, email, phoneNumber, address, openingHours, companyName } = useSelector(state=>state.profile.profile);
+    const { image, name, email, phone, address, openingHours, companyName } = useSelector(state=>state.profile.profile);
     const dispatch = useDispatch();
+    const { signOut } = React.useContext(AuthContext);
+    
     const _onChangeText = (target, text) => {
         dispatch(setProfileInfo({target, data:text}))
     }
@@ -37,6 +39,7 @@ const Settings = ({navigation}) => {
         });
       }  
     const onSave = (profileData) => {}
+
     const {t, i18n} = useTranslation();
     return (
         <Layout>
@@ -57,7 +60,7 @@ const Settings = ({navigation}) => {
                 <View style={{marginVertical:8}}>
                     <Input mode="flat" label={t("settings:name")} placeholder={name || t("settings:enterName")}  errorMsg="limit riched" limit={30} _onChangeText={_onChangeText}/>
                     <Input mode="flat" label={t("settings:email")} placeholder={email || t("settings:enterEmail")}  errorMsg="limit riched" limit={30} _onChangeText={_onChangeText}/>
-                    <Input mode="flat" label={t("settings:phoneNumber")} placeholder={phoneNumber || t("settings:enterPhoneNumber")}  errorMsg="limit riched" limit={12} _onChangeText={_onChangeText}/>
+                    <Input mode="flat" label={t("settings:phone")} placeholder={phone || t("settings:enterphone")} keyboardType="numeric" errorMsg="limit riched" limit={10} _onChangeText={_onChangeText}/>
                 </View>
 
                 <Text style={{alignSelf:'flex-end'}} category="p" weight="bold">{t("settings:shopDetails")}</Text>
@@ -67,6 +70,7 @@ const Settings = ({navigation}) => {
                     <Input mode="flat" label={t("settings:address")} placeholder={address || t("settings:enterAddress")}  errorMsg="limit riched" limit={30} _onChangeText={_onChangeText}/>
                 </View>
                 <View style={{flexDirection:'row', width:'100%', justifyContent:'space-around', paddingHorizontal:24, alignItems:'center'}}>
+                    <Button style={{marginTop:16}} onPress={()=>signOut()} status="white" textStatus="" status="alert" style={{borderWidth:0.5,borderColor:Colors.ALERT}}>{t("common:actions:signOut")}</Button>
                     <Button style={{marginTop:16}} onPress={()=>onSave(true)} status="white" textStatus="hint" style={{borderWidth:0.5,borderColor:Colors.SUCCESS}}>{t("common:actions:save")}</Button>
                 </View>
             </ScrollView>
