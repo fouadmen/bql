@@ -10,7 +10,7 @@ import {AuthContext} from '../../Controllers/Context'
 
 const HEADER_HEIGHT = 192;
 const Settings = ({navigation}) => {
-    const { image, name, email, phone, address, openingHours, companyName } = useSelector(state=>state.profile.profile);
+    const { image, name, email, phone, address, openingHours, storeName } = useSelector(state=>state.profile.profile);
     const dispatch = useDispatch();
     const { signOut } = React.useContext(AuthContext);
     
@@ -65,7 +65,7 @@ const Settings = ({navigation}) => {
 
                 <Text style={{alignSelf:'flex-end'}} category="p" weight="bold">{t("settings:shopDetails")}</Text>
                 <View style={{marginVertical:8}}>
-                    <Input mode="flat" label={t("settings:companyName")} placeholder={companyName || t("settings:enterCompanyName")}  errorMsg="limit riched" limit={30} _onChangeText={_onChangeText}/>
+                    <Input mode="flat" label={t("settings:storeName")} placeholder={storeName || t("settings:enterstoreName")}  errorMsg="limit riched" limit={30} _onChangeText={_onChangeText}/>
                     <Input mode="flat" label={t("settings:openingHours")} placeholder={openingHours || t("settings:openingHours")}  errorMsg="limit riched" limit={5} _onChangeText={_onChangeText}/>
                     <Input mode="flat" label={t("settings:address")} placeholder={address || t("settings:enterAddress")}  errorMsg="limit riched" limit={30} _onChangeText={_onChangeText}/>
                 </View>

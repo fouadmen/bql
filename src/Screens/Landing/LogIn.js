@@ -43,7 +43,6 @@ const LogIn = ({navigation}) => {
                     throw error;
                 }
                 if(k==="email" && !isValidEmail(userInfo.email)){
-                    console.log("here");
                     const error = new Error(t(`auth:invalidEmail`));
                     error.name = "FormError";
                     throw error;

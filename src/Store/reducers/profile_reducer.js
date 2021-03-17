@@ -3,8 +3,8 @@ const initialState = {
     profile : {
         name:"", 
         email:"", 
-        phoneNumber:"",
-        companyName:"", 
+        phone:"",
+        storeName:"", 
         openingHours:"", 
         address:"", 
         image: {
