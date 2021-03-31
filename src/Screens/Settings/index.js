@@ -6,13 +6,13 @@ import { Colors } from '_styles';
 import { setProfileInfo } from "_reducers";
 import {useDispatch, useSelector} from 'react-redux';
 import {launchImageLibrary} from 'react-native-image-picker';
-import {AuthContext} from '../../Controllers/Context'
+import {AppContext} from '../../Controllers/Context'
 
 const HEADER_HEIGHT = 192;
 const Settings = ({navigation}) => {
     const { image, name, email, phone, address, openingHours, storeName } = useSelector(state=>state.profile.profile);
     const dispatch = useDispatch();
-    const { signOut } = React.useContext(AuthContext);
+    const { signOut } = React.useContext(AppContext);
     
     const _onChangeText = (target, text) => {
         dispatch(setProfileInfo({target, data:text}))

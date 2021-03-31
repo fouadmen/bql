@@ -1,3 +1,3 @@
 import Camera from "./Camera";
-
-export {Camera};
+import LoadingActivity from "./LoadingActivity";
+export {Camera, LoadingActivity};

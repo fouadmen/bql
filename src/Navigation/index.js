@@ -1,19 +1,12 @@
 import * as React from 'react';
-import ApptNavigator from './AppNavigator';
+import AppNavigator from './AppNavigator';
 import AuthNavigator from "./AuthNavigator";
 import { useSelector } from 'react-redux';
-import { AuthContext } from '../Controllers/Context';
-import { ActivityIndicator, View } from "react-native";
+import { AppContext } from '../Controllers/Context';
 import { logIn as logInAction, signOut as signOutAction, signUp as signUpAction, retreiveToken } from "_reducers";
 import { useDispatch } from 'react-redux';
-import { Colors } from "_styles";
+import { LoadingActivity } from "_organisms";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const LoadingScreen = () => (
-  <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-    <ActivityIndicator size="large" color={Colors.PRIMARY}/>
-  </View>
-  );
 
 const RootNavigator = ()=>{
   const {token, id, isLoading} = useSelector(state=>state.auth);
@@ -21,7 +14,8 @@ const RootNavigator = ()=>{
   const contextValue = React.useMemo(() => ({
     signUp : async (user) => {
       try {
-        await AsyncStorage.setItem("token", user.id);
+        await AsyncStorage.setItem("token", user.token || user.id);
+        await AsyncStorage.setItem("userId", user.id);
         dispatch(signUpAction({id : user.id, token: user.id}));
       } catch (error) {
         console.error(error);
@@ -29,8 +23,9 @@ const RootNavigator = ()=>{
     },
     signIn: async (user) => {    
       try {
-        await AsyncStorage.setItem("token", user.id);
-        dispatch(logInAction({id : user.id, token: user.id}));
+        await AsyncStorage.setItem("token", user.token || user.id);
+        await AsyncStorage.setItem("userId", user.id);
+        dispatch(logInAction({id : user.id, token: user.id }));
       } catch (error) {
         console.error(error);
       }
@@ -38,6 +33,7 @@ const RootNavigator = ()=>{
     signOut: async () => {
       try {
         await AsyncStorage.removeItem("token");
+        await AsyncStorage.removeItem("userId");
         dispatch(signOutAction({id : null, token: null}));
       } catch (error) {
         console.error(error);
@@ -53,20 +49,20 @@ const RootNavigator = ()=>{
       } catch (error) {
         console.error(error);
       };
-      return dispatch(retreiveToken({token}));
+      dispatch(retreiveToken({token}));
     }, 500)
   },[]);
 
   if (isLoading) {
     return (
-      <LoadingScreen />
+      <LoadingActivity />
     )
   }
 
   return (
-    <AuthContext.Provider value={contextValue}>
-      {token ? <ApptNavigator/> : <AuthNavigator/>}
-    </AuthContext.Provider>
+    <AppContext.Provider value={contextValue}>
+      { token ? <AppNavigator/> : <AuthNavigator/>}
+    </AppContext.Provider>
   )
 }
 

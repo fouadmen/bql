@@ -3,7 +3,7 @@ import { Layout, Text, Header, Input, Button } from "_atoms";
 import { useTranslation } from 'react-i18next';
 import { View, Modal } from 'react-native';
 import UserController from '../../Controllers/UserController';
-import {AuthContext} from '../../Controllers/Context';
+import {AppContext} from '../../Controllers/Context';
 import { Colors } from "_styles";
 import isValidEmail from '../../Utils/EmailValidator';
 
@@ -29,7 +29,7 @@ const LogIn = ({navigation}) => {
     const [userInfo, setUserInfo] = React.useState({email:"", password:""});
     const [showModal, setShowModal] = React.useState(false);
     const [modalMessage, setModalMessage] = React.useState("");
-    const {signIn} = React.useContext(AuthContext);
+    const {signIn} = React.useContext(AppContext);
     const _onChangeText = (data) => {
         setUserInfo({...userInfo,...data});
     }
@@ -68,7 +68,7 @@ const LogIn = ({navigation}) => {
                     setModalMessage(t("auth:userNotRegistred"));
                     break; 
                 default:
-                    console.log(error);
+                    console.log("error :", error);
                     setModalMessage(t("auth:unknownError"));
                     break;
             }

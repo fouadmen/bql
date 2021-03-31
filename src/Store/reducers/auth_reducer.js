@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     token : null,
     id : null,
-    isLoading : true //used for activityloader
+    isLoading : true,
 }
 
 //move this it utils

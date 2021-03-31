@@ -38,6 +38,26 @@ export default {
         invalidePassword:"كلمة المرور يجب أن تحتوي على أكثر من 6 أحرف",
         invalidePhone:"رقم الهاتف غير صالح"
     },
+    onboarding:{
+        tellUs:"أخبرنا قليلاً عن متجرك",
+        storeName:"اسم المحل",
+        openingHours: "أوقات العمل",
+        address:"العنوان",
+        storeNameIsRequired:"اسم المحل مطلوب",
+        openingHoursIsRequired:"ساعات العمل مطلوبة",
+        addressIsRequired:"العنوان مطلوب",
+        from:"من",
+        to:"إلى",
+        am:"صباحا",
+        pm:"مساءً",
+        catalog:"تنظم",
+        catalogText:"نظّم منتجاتك بالطريقة التي تناسبك.",
+        track:"تتبع",
+        trackText:"ابق على اطلاع بالمخزون باستخدام الماسح الضوئي المدمج.",
+        reports:"التقارير",
+        reportsText:"إنشاء تقارير المبيعات والمخزون على الفور.",
+        welcome:"مرحبا"
+    },
     scan:{
         scannerLabel: "انقر فوق الزر 'ابدأ' لبدء فحص المنتجات",
         priceBreakdown: "تفاصيل السعر"
@@ -56,7 +76,7 @@ export default {
         name : "الاسم",
         email : "البريد الإلكتروني",
         phone: "رقم الهاتف",
-        companyName: "المتجر",
+        storeName: "المتجر",
         openingHours: "أوقات العمل",
         address:"العنوان",
         userProfile:"ملف تعريف المستخدم",
@@ -64,7 +84,7 @@ export default {
         enterName:"أدخل الاسم",
         enterEmail:"أدخل البريد الإلكتروني",
         enterphone:"أدخل رقم الهاتف",
-        enterCompanyName:"أدخل اسم المتجر",
+        enterstoreName:"أدخل اسم المتجر",
         enterOpeningHours:"أدخل أوقات العمل",
         enterAddress:"أدخل العنوان"
     },
@@ -87,6 +107,7 @@ export default {
             saveAndNew:"حفظ و جديد",
             saveAndClose:"حفظ و إغلاق",
             signOut:"تسجيل الخروج",
+            next:"التالي"
         },
         kg:"كلغ",
         litre:"لتر",
