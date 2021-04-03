@@ -64,12 +64,12 @@ export default {
     },
     products:{
         productName:"اسم المنتج",
-        purchasePrice:"سعر الشراء",
+        buyingPrice:"سعر الشراء",
         sellingPrice:"سعر البيع",
         quantity:"الكمية",
         code:"الرمز",
         unit:"وحدة",
-        minQuantity:"المستوى الأدنى",
+        minLimit:"المستوى الأدنى",
         totalValue:"القيمة الإجمالية",
     },
     settings:{

@@ -28,7 +28,7 @@ const ProductDetail = ({navigation, route}) => {
                 </View>    
                 <Input mode="flat" label={t("products:productName")} placeholder={productDetails.name}  errorMsg="limit riched" limit={30} _onChangeText={(text)=>_onChangeText("name",text)}/>
                 <Input mode="flat" label={t("products:quantity")} placeholder={String(productDetails.quantity)} errorMsg="limit riched" limit={30} _onChangeText={(text)=>_onChangeText("quantity",text)}/>
-                <Input mode="flat" label={t("products:purchasePrice")} placeholder={String(productDetails.purchasePrice)} errorMsg="limit riched" keyboardType="numeric" limit={7} _onChangeText={(text)=>_onChangeText("purchasePrice",text)}/>
+                <Input mode="flat" label={t("products:buyingPrice")} placeholder={String(productDetails.buyingPrice)} errorMsg="limit riched" keyboardType="numeric" limit={7} _onChangeText={(text)=>_onChangeText("buyingPrice",text)}/>
                 <Input mode="flat" label={t("products:sellingPrice")} placeholder={String(productDetails.sellingPrice)} errorMsg="limit riched" keyboardType="numeric" limit={7} _onChangeText={(text)=>_onChangeText("sellingPrice",text)}/>
                 <Input mode="flat" label={t("products:code")} editable={false} placeholder={String(productDetails.barcode)} />
                 <View style={{alignSelf:'center'}}>

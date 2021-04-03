@@ -7,13 +7,12 @@ import { Colors } from '_styles';
 
 const AddProduct = ({navigation, route}) => {
     const {t, i18n} = useTranslation();
-    const product = {name:'', purchasePrice:0, sellingPrice:0, image:require("../../Assets/images/bottle.jpg"), barcode:0, quantity:0}
-    const [productDetails, setProductDetails] = React.useState(product)
+    const product = {name:'', buyingPrice:0, sellingPrice:0, image:require("../../Assets/images/bottle.jpg"), barcode:0, quantity:0}
+    const [productDetails, setProductDetails] = React.useState(product);
     const _onChangeText = (target, text) => {
         const tmp = productDetails;
         tmp[target]=text;
         setProductDetails(tmp);
-        console.log(productDetails);
     }
     const onSave = (args) => {
         console.log("fire save action");
@@ -30,14 +29,14 @@ const AddProduct = ({navigation, route}) => {
                 </View>    
                 <Input mode="flat" label={t("products:productName")} placeholder={productDetails.name}  errorMsg="limit riched" limit={30} _onChangeText={(text)=>_onChangeText("name",text)}/>
                 <Input mode="flat" label={t("products:quantity")} placeholder={String(productDetails.quantity)} errorMsg="limit riched" limit={30} _onChangeText={(text)=>_onChangeText("quantity",text)}/>
-                <Input mode="flat" label={t("products:purchasePrice")} placeholder={String(productDetails.purchasePrice)} errorMsg="limit riched" keyboardType="numeric" limit={7} _onChangeText={(text)=>_onChangeText("purchasePrice",text)}/>
+                <Input mode="flat" label={t("products:buyingPrice")} placeholder={String(productDetails.buyingPrice)} errorMsg="limit riched" keyboardType="numeric" limit={7} _onChangeText={(text)=>_onChangeText("buyingPrice",text)}/>
                 <Input mode="flat" label={t("products:sellingPrice")} placeholder={String(productDetails.sellingPrice)} errorMsg="limit riched" keyboardType="numeric" limit={7} _onChangeText={(text)=>_onChangeText("sellingPrice",text)}/>
                 <Input mode="flat" label={t("products:code")} editable={false} placeholder={String(productDetails.barcode)} />
                 <View style={{alignSelf:'center'}}>
                     <Button onPress={onSave}>{t("common:actions:save")}</Button> 
                 </View>
             </ScrollView>
-           
+                     
         </Layout>
     )
 }
