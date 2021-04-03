@@ -15,8 +15,8 @@ const fuseOptions = {
     ]
   };
 
-const bottle = {name:'Bottle', purchasePrice:10, sellingPrice:12, image:require("../../Assets/images/bottle.jpg"), barcode:232423422, quantity:60}
-const omo = {name:'OMO', purchasePrice:5.5, sellingPrice:6, image:require("../../Assets/images/omo.jpg"), barcode:232423411, quantity:10}
+const bottle = {name:'Bottle', buyingPrice:10, sellingPrice:12, image:require("../../Assets/images/bottle.jpg"), barcode:232423422, quantity:60}
+const omo = {name:'OMO', buyingPrice:5.5, sellingPrice:6, image:require("../../Assets/images/omo.jpg"), barcode:232423411, quantity:10}
  
 const ListItem = ({item, onPress})=>{
     const indicatorColor = item.quantity > 30 ? Colors.SUCCESS : item.quantity > 10 ? Colors.WARNING : Colors.ALERT
@@ -59,7 +59,7 @@ const Products = ({navigation}) => {
                 ItemSeparatorComponent={()=><Divider style={{marginVertical:8, marginLeft:56}}/>}
                 showsVerticalScrollIndicator={false}
             />
-            <FAB onPress={()=>navigation.navigate("NewProductForm")}/>
+            <FAB onPress={()=>navigation.navigate("CaptureBarcode")}/>
         </Layout>
     )
 }

@@ -4,9 +4,10 @@ import { Camera } from "_organisms";
 import { Button } from "_atoms";
 import { Colors } from '_styles';
 import { useTranslation } from 'react-i18next';
-import { setProductInfo } from "_reducers";
+import { setProductInfo, setProduct, setProductImage } from "_reducers";
 import {useDispatch} from 'react-redux';
-
+import { useFocusEffect } from '@react-navigation/native';
+import ProductController from "../../Controllers/ProductController";
 const styles = {
     root: {
         flex: 1,
@@ -25,25 +26,40 @@ const styles = {
 };
 
 const CaptureBarcode = ({navigation}) => {
-    const [barcode, setBarcode] = React.useState("");
+    const [_barcode, setBarcode] = React.useState("");
     const [displayCamera, setDisplayCamera] = React.useState(false);
     const {t, i18n} = useTranslation();
     const dispatch = useDispatch();
 
-    React.useEffect(() => {
-        setTimeout(() => {
-         setDisplayCamera(true);
-        }, 500); 
-     },[]);
-    
+    useFocusEffect(React.useCallback(() => {
+        setTimeout(() => setDisplayCamera(true), 500); 
+        return () => {
+            setDisplayCamera(false)
+        }
+    },[]))
+
     const onItemScan = (rawData) => {
         setBarcode(rawData.data);
     }
 
-    const saveBarcode = () => {
-        dispatch(setProductInfo({target:"barcode", data:barcode}));
-        navigation.navigate("NewProductForm");
-        setDisplayCamera(false);
+    const saveBarcode = async () => {
+        try {
+            let product = await ProductController.fetchProduct(_barcode);
+            if(!product){
+                dispatch(setProductInfo({target:"barcode", data:_barcode}));
+                dispatch(setProductImage({data: ''}));
+                navigation.navigate("NewProductForm", {'isNew' : true});
+                setDisplayCamera(false);
+                return;
+            }
+            const {barcode, name, unit, imageUri, id} = product;
+            dispatch(setProduct({data:{barcode, name, unit, id}}));
+            dispatch(setProductImage({data: imageUri}))
+            navigation.navigate("NewProductForm", {'isNew' : false});
+            setDisplayCamera(false);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const onChangeText = (val) => {
@@ -58,13 +74,13 @@ const CaptureBarcode = ({navigation}) => {
                 </View>
                 <View style={styles.lowerSection}>
                     <TextInput 
-                        value={barcode}
+                        value={_barcode}
                         placeholder={t("products:code")} 
                         onChangeText={onChangeText}
                         keyboardType="numeric"
                         style={{width:'100%', borderBottomWidth:1, borderBottomColor:Colors.GRAY_DARK, fontSize:20}} 
                     />
-                    <Button disabled={barcode==""} style={{marginTop:16}} onPress={saveBarcode}>{t("common:actions:continue")}</Button>
+                    <Button disabled={_barcode==""} style={{marginTop:16}} onPress={saveBarcode}>{t("common:actions:continue")}</Button>
                 </View>
             </View>
 

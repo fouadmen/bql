@@ -3,9 +3,9 @@ const initialState = {
     productInfo : {
         name:"", 
         quantity:"", 
-        minQuantity:"", 
-        unit:"", 
-        purchasePrice:"", 
+        minLimit:"", 
+        unit:"kg", 
+        buyingPrice:"", 
         sellingPrice:"",
         barcode:""
     },
@@ -20,6 +20,9 @@ const productReducers = {
     setProductInfo(state, action){
         state.productInfo[action.payload.target] = action.payload.data;
     },
+    setProduct(state, action){
+        Object.getOwnPropertyNames(action.payload.data).forEach(d => state.productInfo[d] = action.payload.data[d]);
+    },
     setProductImage(state, action){
         state.productImage.uri = action.payload.data;
     },
@@ -28,9 +31,9 @@ const productReducers = {
         state.productInfo =  {
             name:"", 
             quantity:"", 
-            minQuantity:"", 
+            minLimit:"", 
             unit:"", 
-            purchasePrice:"", 
+            buyingPrice:"", 
             sellingPrice:"",
             barcode:""
         }
@@ -43,5 +46,5 @@ const productSlice = createSlice({
     reducers : productReducers
 })
 
-export const { setProductInfo, setProductImage, resetProductState } = productSlice.actions 
+export const { setProductInfo, setProductImage, resetProductState, setProduct } = productSlice.actions 
 export default productSlice;
