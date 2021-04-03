@@ -16,6 +16,9 @@ const storeReducers = {
     redirect(state, action){
         state.store = action.payload.store;
         state.isLoading = false;
+    },
+    setStoreInfo(state, action){
+        state.store = action.payload;
     }
 } 
 
@@ -25,5 +28,5 @@ const storeSlice = createSlice({
     reducers : storeReducers
 })
 
-export const { fetchStore, onboarding, redirect } = storeSlice.actions;
+export const { fetchStore, onboarding, redirect, setStoreInfo } = storeSlice.actions;
 export default storeSlice;

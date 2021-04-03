@@ -25,7 +25,21 @@ class StoreController {
             if(storeInfo) {
                 HttpClient.post(STORE_ROUTE, storeInfo).then(res=>resolve(res.data.store)).catch(err=>{reject(err)});
             } else{
-                reject(error);
+                reject("Invalide Store Info");
+            }
+        })
+    }
+
+    static async updateStore(storeInfo) {
+        return new Promise((resolve, reject) => {
+            if(storeInfo) {
+                HttpClient.put(`${STORE_ROUTE}/${storeInfo.id}`, storeInfo)
+                .then(res=>{
+                    console.log(`${STORE_ROUTE}/${storeInfo.id}`);
+                    resolve(res.data.store)
+                }).catch(err=>{reject(err)});
+            } else{
+                reject("Invalide Store Info");
             }
         })
     }
